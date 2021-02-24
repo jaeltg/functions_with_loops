@@ -75,11 +75,10 @@ def print_menu():
     print("M or m: Display this menu")
     print("Q or q: Quit") 
 
-loop = 1
 
 print_menu()
-user_input = input("Select an option: ")
-while loop == 1:
+user_input = int(input("Select an option: "))
+while user_input != 0:
 
     if user_input == 1:
         print(tasks)
@@ -88,20 +87,22 @@ while loop == 1:
     elif user_input == 3:
         print(completed_tasks(tasks))
     elif user_input == 4:
-        print(given_description_mark_complete(tasks, input("Add task name to mark as completed")))
+        print(given_description_mark_complete(tasks, input("Add task name to mark as completed: ")))
     elif user_input == 5:
-        print(certain_time(tasks, int(input("Add time limit"))))
+        print(certain_time(tasks, int(input("Add time limit: "))))
     elif user_input == 6:
-        print(given_description(tasks, input("Add selected task"))) 
+        print(given_description(tasks, input("Add selected task: "))) 
     elif user_input == 7:
-        print(add_task(tasks, input("Add description"), input("Add True or Flase"), input("Add time")))
-    elif user_input == "M" or "m":
-        print_menu()
-    elif user_input == "Q" or "q":
-        loop = 0                          
+        print(add_task(tasks, input("Add description: "), input("Add True or Flase: "), input("Add time: ")))
+    # elif user_input == "M" or "m":
+    #     print_menu()
+    # elif user_input == "Q" or "q": 
+    #     user_input = 0                        
     else:
         print("Please select a valid option")
            
+    print_menu()
+    user_input = int(input("Select an option: "))
 
 
 
