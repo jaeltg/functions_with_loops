@@ -63,46 +63,47 @@ def add_task(task_list, description, completed, time):
 new_task_list = add_task(tasks, "Clean Room", True, 30)
 # print(new_task_list)  
 
+def print_menu():
+    print("Menu:")
+    print("1: Display All Tasks")
+    print("2: Display Uncompleted Tasks")
+    print("3: Display Completed Tasks")
+    print("4: Mark Task as Complete")
+    print("5: Get Tasks Which Take Longer Than a Given Time")
+    print("6: Find Task by Description")
+    print("7: Add a new Task to list")
+    print("M or m: Display this menu")
+    print("Q or q: Quit") 
+
+loop = 1
+
+print_menu()
 user_input = input("Select an option: ")
-while user_input != None:
+while loop == 1:
+
     if user_input == 1:
         print(tasks)
     elif user_input == 2:
-        print(uncompleted_tasks)
+        print(uncompleted_tasks(tasks))
     elif user_input == 3:
-        print(completed_tasks)
+        print(completed_tasks(tasks))
     elif user_input == 4:
-        print(given_description_mark_complete)
+        print(given_description_mark_complete(tasks, input("Add task name to mark as completed")))
     elif user_input == 5:
-        print(certain_time)
+        print(certain_time(tasks, int(input("Add time limit"))))
     elif user_input == 6:
-        print(given_description)
+        print(given_description(tasks, input("Add selected task"))) 
     elif user_input == 7:
-        print(add_task)
+        print(add_task(tasks, input("Add description"), input("Add True or Flase"), input("Add time")))
     elif user_input == "M" or "m":
-        print("Menu:")
-        print("1: Display All Tasks")
-        print("2: Display Uncompleted Tasks")
-        print("3: Display Completed Tasks")
-        print("4: Mark Task as Complete")
-        print("5: Get Tasks Which Take Longer Than a Given Time")
-        print("6: Find Task by Description")
-        print("7: Add a new Task to list")
-        print("M or m: Display this menu")
-        print("Q or q: Quit") 
+        print_menu()
     elif user_input == "Q" or "q":
-        break                            
+        loop = 0                          
     else:
-        print("Menu:")
-        print("1: Display All Tasks")
-        print("2: Display Uncompleted Tasks")
-        print("3: Display Completed Tasks")
-        print("4: Mark Task as Complete")
-        print("5: Get Tasks Which Take Longer Than a Given Time")
-        print("6: Find Task by Description")
-        print("7: Add a new Task to list")
-        print("M or m: Display this menu")
-        print("Q or q: Quit")    
+        print("Please select a valid option")
+           
+
+
 
 
 
