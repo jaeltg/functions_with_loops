@@ -45,16 +45,21 @@ def given_description(task_list, description):
     for task in task_list:
         if task ["description"] == description:
             return task
+    return "Task Not Found"        
 task_specific = given_description(tasks, "Wash Dishes")
 # print(task_specific)    
 
-def given_description_mark_complete(task_list, description):
-    for task in task_list:
-        if task["description"] == description:
-            task["completed"] = True
-    return task
-task_now_completed = given_description_mark_complete(tasks, "Wash Dishes")
-# print(tasks) 
+# def given_description_mark_complete(task_list, description):
+#     for task in task_list:
+#         if task["description"] == description:
+#             task["completed"] = True
+#     return task
+# task_now_completed = given_description_mark_complete(tasks, "Wash Dishes")
+# # print(tasks) 
+
+def mark_completed(description):
+    task = given_description(tasks, description)
+    task["completed"] = True
 
 def add_task(task_list, description, completed, time):
     new_task = {"description": description, "completed": completed, "time_taken": time}
@@ -75,34 +80,33 @@ def print_menu():
     print("M or m: Display this menu")
     print("Q or q: Quit") 
 
-
 print_menu()
-user_input = int(input("Select an option: "))
-while user_input != 0:
+user_input = input("Select an option: ")
+while user_input != "":
 
-    if user_input == 1:
+    if user_input == "1":
         print(tasks)
-    elif user_input == 2:
+    elif user_input == "2":
         print(uncompleted_tasks(tasks))
-    elif user_input == 3:
+    elif user_input == "3":
         print(completed_tasks(tasks))
-    elif user_input == 4:
-        print(given_description_mark_complete(tasks, input("Add task name to mark as completed: ")))
-    elif user_input == 5:
+    elif user_input == "4":
+        print(mark_completed(input("Add task name to mark as completed: ")))
+    elif user_input == "5":
         print(certain_time(tasks, int(input("Add time limit: "))))
-    elif user_input == 6:
+    elif user_input == "6":
         print(given_description(tasks, input("Add selected task: "))) 
-    elif user_input == 7:
+    elif user_input == "7":
         print(add_task(tasks, input("Add description: "), input("Add True or Flase: "), input("Add time: ")))
-    # elif user_input == "M" or "m":
-    #     print_menu()
-    # elif user_input == "Q" or "q": 
-    #     user_input = 0                        
+    elif user_input == "M" or "m":
+        print_menu()
+    elif user_input == "Q" or "q": 
+       user_input == ""                    
     else:
         print("Please select a valid option")
            
     print_menu()
-    user_input = int(input("Select an option: "))
+    user_input = input("Select an option: ")
 
 
 
